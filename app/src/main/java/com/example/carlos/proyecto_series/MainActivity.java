@@ -213,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {//utilizamos este metodo para monitorear en cada cambio
+                listape.clear();
                 series= new DescargaSeries();
 
                 series.execute("http://api.tvmaze.com/search/shows?q="+s.toString());// Ejecutamos la clase descargar series con cada cambio que se realice en el edittext
@@ -230,13 +231,17 @@ public class MainActivity extends AppCompatActivity {
 
     //Este metodo sirve para añadir elementos al arraylist del tipo Molde peli para que cambie el adaptador
     private void llenarMolde(ArrayList<String> nombres, ArrayList<Bitmap> carteles,ArrayList<Integer> ids){
-        int j=nombres.size()-3;
+        int j=nombres.size()-6;
         while (j< nombres.size()){
             listape.add(new Molde_peli(carteles.get(j),nombres.get(j),ids.get(j)));
             j+=1;
         }
-//        adapter=new Adaptador_peli(listape);
-//        recyclerPeliculas.setAdapter(adapter);
+//        int p=0;
+//        while (p<nombres.size()){
+//            Log.i("Verdad: ",nombres.get(p)+" "+ids.get(p));
+//            p++;
+//        }
+
         adapter.notifyDataSetChanged();//notificamos al adaptador de los cambios
         titulo.clear();//borramos los datos de los arregklos dado que se obtienen demasiados resultados
         cartel.clear();

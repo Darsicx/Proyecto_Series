@@ -227,8 +227,10 @@ public class DetallesActivity extends AppCompatActivity {
          dias=findViewById(R.id.dias);
          imagen=findViewById(R.id.imagen);
          listEpis=new ArrayList<>();
+         episodios=new ArrayList<>();
+         resumen=new ArrayList<>();
          lista=findViewById(R.id.listview);
-         listEpis.add(new Molde_episodios("Episodio 1","Prueba de contendio"));
+        // listEpis.add(new Molde_episodios("Episodio 1","Prueba de contendio"));
         adapta=new Adaptador_epi(this,listEpis);
         lista.setAdapter(adapta);
 
@@ -254,6 +256,7 @@ public class DetallesActivity extends AppCompatActivity {
         int i=0;
         while (i<episodios.size()) {
             listEpis.add(new Molde_episodios(episodios.get(i),resumen.get(i))); //Se le pasan como parametros el #episodio y su resumen
+            i++;
         }
         adapta.notifyDataSetChanged();//Se notiifican los cambios al adaptador
         episodios.clear();//Se borran las listas para no guardar tanta informacion
